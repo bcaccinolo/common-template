@@ -22,8 +22,10 @@ module ActionController
     end
 
     def relevant_for(action)
-      return(true) if self.class.common_actions.empty?
-      return(true) if self.class.common_actions.include?(action.to_sym)
+      return(false) if self.class.template.nil?
+      return(true)  if self.class.common_actions.nil?
+      return(true)  if self.class.common_actions.empty?
+      return(true)  if self.class.common_actions.include?(action.to_sym)
       false
     end
 
